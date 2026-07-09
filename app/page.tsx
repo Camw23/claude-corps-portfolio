@@ -19,6 +19,7 @@ type LinkItem = {
   value: string;
   href?: string;
   note?: string;
+  subtle?: boolean;
 };
 
 const projects: Project[] = [
@@ -46,7 +47,7 @@ const projects: Project[] = [
     lesson:
       "It taught me how to scope an AI product around a real small-business workflow, connect the pieces across payments, data, and messaging, and stay honest about what is ready.",
     link: {
-      label: "Visit CallCatch AI",
+      label: "View Site",
       href: "https://getcallcatchai.com"
     }
   },
@@ -74,7 +75,7 @@ const projects: Project[] = [
     note:
       "This project started as an Obsidian-based Bible knowledge hub before becoming a public Quartz website.",
     link: {
-      label: "View live site",
+      label: "View Site",
       href: "https://zion-sermon-biblegraph.vercel.app"
     }
   }
@@ -111,35 +112,40 @@ const aiWorkflowParagraphs = [
   "When something breaks, I paste the error back in, ask what happened, and keep testing until it works. I do not treat AI like magic or blindly trust it. I test the code, ask questions, verify important details, and use my own judgment."
 ];
 
-const links: LinkItem[] = [
+const contactLinks: LinkItem[] = [
   {
-    label: "GitHub",
-    value: "Add GitHub URL",
-    note: "Placeholder"
+    label: "Email",
+    value: "cameronwansing07@gmail.com",
+    href: "mailto:cameronwansing07@gmail.com"
   },
   {
     label: "LinkedIn",
-    value: "Add LinkedIn URL",
-    note: "Placeholder"
-  },
-  {
-    label: "Email",
-    value: "Add preferred email",
-    note: "Placeholder"
+    value: "linkedin.com/in/cameron-wansing",
+    href: "https://www.linkedin.com/in/cameron-wansing"
   },
   {
     label: "Resume",
-    value: "Add resume PDF",
-    note: "Placeholder"
+    value: "View PDF",
+    href: "/Cameron_Wansing.pdf"
   },
   {
+    label: "GitHub",
+    value: "github.com/Camw23",
+    href: "https://github.com/Camw23",
+    note: "Profile",
+    subtle: true
+  }
+];
+
+const projectLinks: LinkItem[] = [
+  {
     label: "Zion Sermon BibleGraph",
-    value: "Live site",
+    value: "Visit project",
     href: "https://zion-sermon-biblegraph.vercel.app"
   },
   {
     label: "CallCatch AI",
-    value: "Live site",
+    value: "Visit project",
     href: "https://getcallcatchai.com"
   }
 ];
@@ -257,15 +263,13 @@ export default function Home() {
                 story current.
               </h2>
               <p className="mt-5 max-w-xl text-sm leading-6 text-[#d8d1c5]">
-                I am looking for environments where I can keep building,
-                learning quickly, serving people well, and turning AI into
-                practical tools.
+                I am looking for environments where I can keep building, learn
+                quickly, serve people well, and turn AI into practical tools.
               </p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {links.map((item) => (
-                <LinkPill key={item.label} item={item} />
-              ))}
+            <div className="grid gap-6 sm:grid-cols-2">
+              <FooterLinkGroup title="Contact" links={contactLinks} />
+              <FooterLinkGroup title="Projects" links={projectLinks} />
             </div>
           </div>
         </div>
@@ -327,14 +331,11 @@ function Hero() {
               View Projects
             </a>
             <a
-              href="#links"
+              href="mailto:cameronwansing07@gmail.com"
               className="rounded-md border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-center text-sm font-semibold text-[var(--foreground)] transition hover:border-[var(--accent)]"
             >
-              Contact
+              Email Me
             </a>
-            <span className="rounded-md border border-dashed border-[var(--border)] px-5 py-3 text-center text-sm font-semibold text-[var(--muted)]">
-              GitHub URL needed
-            </span>
           </div>
         </div>
         <aside className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 lg:self-end">
@@ -449,26 +450,47 @@ function StatLine({ label, value }: { label: string; value: string }) {
   );
 }
 
-function LinkPill({ item }: { item: LinkItem }) {
+function FooterLinkGroup({
+  title,
+  links
+}: {
+  title: string;
+  links: LinkItem[];
+}) {
+  return (
+    <div>
+      <h3 className="text-sm font-semibold text-[#fffdf8]">{title}</h3>
+      <div className="mt-4 grid gap-3">
+        {links.map((item) => (
+          <FooterLink key={item.label} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FooterLink({ item }: { item: LinkItem }) {
   const content = (
     <>
-      <span className="text-sm font-semibold">{item.label}</span>
-      <span className="text-sm text-[#d8d1c5]">{item.value}</span>
-      {item.note ? (
-        <span className="text-xs font-medium uppercase tracking-[0.16em] text-[#9cc7c4]">
-          {item.note}
-        </span>
-      ) : null}
+      <span className={item.subtle ? "text-xs font-semibold" : "text-sm font-semibold"}>
+        {item.label}
+      </span>
+      <span className={item.subtle ? "text-xs text-[#d8d1c5]" : "text-sm text-[#d8d1c5]"}>
+        {item.value}
+      </span>
+      {item.note ? <span className="text-xs text-[#9cc7c4]">{item.note}</span> : null}
     </>
   );
 
   if (item.href) {
+    const isExternal = item.href.startsWith("http");
+
     return (
       <a
         href={item.href}
-        target="_blank"
-        rel="noreferrer"
-        className="flex min-h-28 flex-col justify-between rounded-lg border border-[#4a4944] bg-[#23231f] p-5 !text-[#fffdf8] transition hover:border-[#9cc7c4] hover:!text-[#fffdf8]"
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noreferrer" : undefined}
+        className="flex min-h-20 flex-col justify-between rounded-lg border border-[#4a4944] bg-[#23231f] p-4 !text-[#fffdf8] transition hover:border-[#9cc7c4] hover:!text-[#fffdf8]"
       >
         {content}
       </a>
@@ -476,7 +498,7 @@ function LinkPill({ item }: { item: LinkItem }) {
   }
 
   return (
-    <div className="flex min-h-28 flex-col justify-between rounded-lg border border-dashed border-[#4a4944] bg-[#20201d] p-5 !text-[#fffdf8]">
+    <div className="flex min-h-20 flex-col justify-between rounded-lg border border-dashed border-[#4a4944] bg-[#20201d] p-4 !text-[#fffdf8]">
       {content}
     </div>
   );
