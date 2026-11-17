@@ -1,0 +1,191 @@
+{
+  "site": {
+    "name": "Cameron Wansing",
+    "headline": "I build AI tools for the places I spend my time: work, church, and my own to-do list.",
+    "intro": "I'm a college student near Kansas City working toward a career in finance. At ProAthlete, the company behind JustBats and JustGloves, I put AI to work across departments. These are a few things I've built, with what each one does and how I got there.",
+    "projectsHeading": "Projects",
+    "email": "cameronwansing07@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/cameron-wansing",
+    "resumeUrl": "",
+    "offClockHeading": "Off the clock",
+    "offClock": [
+      "On the golf course most afternoons",
+      "Playing jazz piano, mostly improvising",
+      "Mixing Sunday worship recordings",
+      "Leveling a character in World of Warcraft"
+    ],
+    "footer": "Built and maintained by Cameron Wansing."
+  },
+  "projects": [
+    {
+      "slug": "sitewatch",
+      "published": true,
+      "title": "ProAthlete SiteWatch",
+      "kind": "Website quality scanner",
+      "year": "2026",
+      "builtFor": "ProAthlete (JustBats, JustGloves)",
+      "role": "Designed and built it",
+      "oneLiner": "Scans ProAthlete's online stores and gives the team one list of typos, broken links and page problems to fix.",
+      "cover": "",
+      "summary": "SiteWatch reads through ProAthlete's storefront pages and collects what it finds wrong into one place. Each issue has a severity, the pages it affects, and a plain-language explanation of what to change, so someone who has never seen the scan can open it and start fixing.",
+      "why": "Small mistakes on product pages are easy to miss and hard to keep track of across a large store. I wanted the team to have one current list of what needs fixing instead of finding problems one at a time.",
+      "process": [
+        {
+          "title": "Crawl the sites",
+          "text": "A scanner crawls the store pages and records what each page contains, including its links and images."
+        },
+        {
+          "title": "Find and rank the issues",
+          "text": "Findings are grouped into issues and ranked from critical to informational, so the most damaging problems sit at the top."
+        },
+        {
+          "title": "Check the results by hand",
+          "text": "Before sharing anything, I reviewed flagged links and images myself. A list like this only helps if people trust what is on it."
+        },
+        {
+          "title": "Explain each issue",
+          "text": "Every issue shows where it appears and what to do about it, written for the person fixing the page and not for the person who built the scanner."
+        },
+        {
+          "title": "Share it with the team",
+          "text": "The results are published as a read-only site behind a shared password, with a dashboard, an issue list and a monitoring view."
+        }
+      ],
+      "learned": "Finding problems was the easy half. The work that mattered was making the results trustworthy and clear enough that other people would act on them.",
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "Firecrawl",
+        "Vercel",
+        "AI coding agents"
+      ],
+      "status": "Deployed for the ProAthlete team. The live tool is private to the company, and scan results are not shown here.",
+      "screenshots": [],
+      "links": []
+    },
+    {
+      "slug": "zion-biblegraph",
+      "published": true,
+      "title": "Zion BibleGraph",
+      "kind": "Sermon study library",
+      "year": "2026",
+      "builtFor": "My church, Zion",
+      "role": "Designed and built it",
+      "oneLiner": "Turns my church's sermons into a searchable library of summaries, topics and Bible passages.",
+      "cover": "",
+      "summary": "Zion BibleGraph is a public site where anyone at my church can revisit a sermon, read a clear summary, follow a topic across messages, or see every sermon that used a given Bible passage. Topics link to the passages used to teach them, with the sermon evidence behind each connection.",
+      "why": "I had two years of sermon and Bible study notes that were hard to search, revisit or share. It started as a personal notes vault, and I turned it into a site so other people could use it too.",
+      "process": [
+        {
+          "title": "Pull in the sermons",
+          "text": "The pipeline reads the church's public podcast feed and downloads each new message."
+        },
+        {
+          "title": "Transcribe the audio",
+          "text": "Each recording is split into segments and transcribed with an AI speech model. I compare segment coverage against the length of the original recording."
+        },
+        {
+          "title": "Summarize and connect",
+          "text": "AI drafts a summary and pulls out the topics, speakers, series and Bible references. Quotations in each summary are checked against the transcript."
+        },
+        {
+          "title": "Publish as linked pages",
+          "text": "Every sermon, topic, passage, speaker and series becomes its own page, linked to the others and published as a static site."
+        },
+        {
+          "title": "Verify before it goes live",
+          "text": "Automated tests and a link check run before each update, so a new batch of sermons can't quietly break the library."
+        }
+      ],
+      "learned": "AI projects are strongest when they help a real community reach something valuable. I also learned to label AI-assisted summaries honestly and point people back to the original message.",
+      "stack": [
+        "Python",
+        "AI transcription",
+        "AI summarization",
+        "Markdown",
+        "Quartz",
+        "GitHub",
+        "Vercel"
+      ],
+      "status": "Live and public, with new sermons added in batches.",
+      "screenshots": [],
+      "links": [
+        {
+          "label": "Open Zion BibleGraph",
+          "url": "https://zion-sermon-biblegraph.vercel.app"
+        }
+      ]
+    },
+    {
+      "slug": "questline",
+      "published": true,
+      "title": "Questline",
+      "kind": "Mac app for tasks and time",
+      "year": "2026",
+      "builtFor": "Myself",
+      "role": "Designed and directed the build",
+      "oneLiner": "A Mac task manager that turns my projects into quests, styled after World of Warcraft's quest log.",
+      "cover": "img/questline-concept.webp",
+      "summary": "Questline is a native Mac app for projects, tasks and time. Each project is broken into steps, and a small tracker window floats on the desktop showing the three or four quests I can start right now. It times the work, compares my estimates with what happened, and plans the day around my calendar with room left for leisure and open time.",
+      "why": "Between school, work, my resale businesses and church, I have a lot of projects running at once. I play World of Warcraft, and I wanted my real work to feel like its quest log: a short list of things I can start right now.",
+      "process": [
+        {
+          "title": "Write the full spec first",
+          "text": "I started with a long written description of how the app should behave, including what it should never do, such as punishing scores or writing to calendars it doesn't own."
+        },
+        {
+          "title": "Explore four visual directions",
+          "text": "I generated four design concepts and kept all of them as selectable themes. Parchment Quest Log, the Warcraft-inspired one, is the default."
+        },
+        {
+          "title": "Build in increments with an AI coding agent",
+          "text": "The app was built one slice at a time in Swift, each with its own tests and a written record of what was verified and what was still open."
+        },
+        {
+          "title": "Connect Google Calendar carefully",
+          "text": "It reads my personal, school and work calendars but only writes to one calendar it created. I verified that with a real create, move and delete round trip."
+        },
+        {
+          "title": "Use it every day",
+          "text": "I run my own days in it, and each rough edge I hit becomes the next change, like pasting a numbered list to add a whole project's steps at once."
+        }
+      ],
+      "learned": "Writing down exactly what I wanted, and what counted as done, mattered more than any single prompt. The honest verification notes kept me from believing something worked before it did.",
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "AppKit",
+        "Google Calendar API",
+        "AI coding agents"
+      ],
+      "status": "Installed and in daily use on my Mac. It is a personal app and is not distributed.",
+      "screenshots": [
+        {
+          "src": "img/questline-concept.webp",
+          "caption": "Design concept for the Parchment Quest Log theme, used as the visual target for the app"
+        }
+      ],
+      "links": []
+    },
+    {
+      "slug": "zion-youth",
+      "published": false,
+      "title": "Zion Youth",
+      "kind": "",
+      "year": "2026",
+      "builtFor": "",
+      "role": "",
+      "oneLiner": "",
+      "cover": "",
+      "summary": "",
+      "why": "",
+      "process": [],
+      "learned": "",
+      "stack": [],
+      "status": "",
+      "screenshots": [],
+      "links": []
+    }
+  ]
+}
