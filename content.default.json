@@ -73,7 +73,7 @@
       "builtFor": "My church, Zion",
       "role": "Designed and built it",
       "oneLiner": "Turns my church's sermons into a searchable library of summaries, topics and Bible passages.",
-      "cover": "",
+      "cover": "img/biblegraph-home.webp",
       "summary": "Zion BibleGraph is a public site where anyone at my church can revisit a sermon, read a clear summary, follow a topic across messages, or see every sermon that used a given Bible passage. Topics link to the passages used to teach them, with the sermon evidence behind each connection.",
       "why": "I had two years of sermon and Bible study notes that were hard to search, revisit or share. It started as a personal notes vault, and I turned it into a site so other people could use it too.",
       "process": [
@@ -109,7 +109,20 @@
         "Vercel"
       ],
       "status": "Live and public, with new sermons added in batches.",
-      "screenshots": [],
+      "screenshots": [
+        {
+          "src": "img/biblegraph-home.webp",
+          "caption": "The home page, starting with the latest message"
+        },
+        {
+          "src": "img/biblegraph-sermon.webp",
+          "caption": "A sermon page: the main idea, with the themes and passages it connects to"
+        },
+        {
+          "src": "img/biblegraph-topics.webp",
+          "caption": "Browsing by topic"
+        }
+      ],
       "links": [
         {
           "label": "Open Zion BibleGraph",
